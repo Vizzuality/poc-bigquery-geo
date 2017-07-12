@@ -8,6 +8,8 @@ services:
     environment:
       GIN_MODE: debug
       PORT: 3050
+      GCLOUD_PROJECT_ID: ${GCLOUD_PROJECT_ID}
+      GCLOUD_CREDENTIALS: ${GCLOUD_CREDENTIALS}
     command: develop
     volumes:
       - ./microservice:/go/src/github.com/vizzuality/poc-bigquery-geo/microservice

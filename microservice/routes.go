@@ -7,9 +7,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func getUserRouter(c *gin.Context) {
-	log.Println("[ROUTER] Getting user")
-	name := c.Param("name")
-	user := getUserService(name)
-	c.JSON(http.StatusOK, user)
+func queryRouter(c *gin.Context) {
+	log.Println("[ROUTER] Query")
+	sql := c.Query("sql")
+	result := queryService(sql)
+	c.JSON(http.StatusOK, result)
 }
