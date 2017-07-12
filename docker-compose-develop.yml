@@ -1,0 +1,13 @@
+version: '3'
+services:
+  develop:
+    build: .
+    container_name: poc-bigquery-geo-develop
+    ports:
+      - "3050:3050"
+    environment:
+      GIN_MODE: debug
+      PORT: 3050
+    command: develop
+    volumes:
+      - ./microservice:/go/src/github.com/vizzuality/poc-bigquery-geo/microservice

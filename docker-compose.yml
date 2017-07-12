@@ -1,0 +1,11 @@
+version: '3'
+services:
+  develop:
+    build: .
+    container_name: poc-bigquery-geo-prod
+    ports:
+      - "3050"
+    environment:
+      GIN_MODE: release
+      PORT: 3050
+    command: start
