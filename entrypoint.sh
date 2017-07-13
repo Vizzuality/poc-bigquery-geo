@@ -9,7 +9,7 @@ case "$1" in
         ;;
     start)
         echo "Running Start"
-        echo -e "$GCLOUD_CREDENTIALS" | base64 -d > credentials.json
+        echo "$GCLOUD_CREDENTIALS" | base64 -d > credentials.json
         exec go run main.go
         ;;
     startkube)

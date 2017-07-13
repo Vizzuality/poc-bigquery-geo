@@ -1,7 +1,6 @@
 package microservice
 
 import (
-	"net/http"
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -11,8 +10,9 @@ import (
 func InitApp() {
 
 	router := gin.Default()
-	router.GET("/ping", func(c *gin.Context) { c.String(http.StatusOK, "pong") })
 	router.GET("/query", queryRouter)
+	router.StaticFile("/", "./microservice/assets/index.html")
+	router.Static("/assets", "microservice/assets")
 
 	// in prod using $PORT in dev using 3001 to map gin $PORT:3001
 	port := os.Getenv("PORT")
