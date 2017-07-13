@@ -35,11 +35,11 @@ func queryService(sql string) ([]map[string]bigquery.Value, error) {
 			);` + sql
 	}
 	if strings.Contains(sql, "viz_intersect") {
-		sql = `CREATE TEMP FUNCTION viz_intersect(long FLOAT64, lat FLOAT64, poly STRING)
+		sql = `CREATE TEMP FUNCTION viz_intersect(poly1 STRING, poly2 STRING)
 			  RETURNS BOOLEAN
 			  LANGUAGE js AS
 			"""
-				return VizGeo.intersect(long, lat, JSON.parse(poly));
+				return VizGeo.intersect(JSON.parse(poly1), JSON.parse(poly2));
 			"""
 			OPTIONS (
 			  library="gs://bigquery-geospatial-viz/vizgeo.min.js"

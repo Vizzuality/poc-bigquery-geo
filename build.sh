@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t vizzuality/poc-bigquery-geo:0.0.2 .
+docker build -t vizzuality/poc-bigquery-geo:0.0.3 .
