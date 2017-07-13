@@ -14,7 +14,7 @@ case "$1" in
         ;;
     startkube)
         echo "Running Start in Kube Cluster"
-        echo -e "$GCLOUD_CREDENTIALS" > credentials.json
+        echo "$GCLOUD_CREDENTIALS" > credentials.json
         exec go run main.go
         ;;
     *)
