@@ -19,7 +19,7 @@ func queryService(sql string) ([]map[string]bigquery.Value, error) {
 	client, err := bigquery.NewClient(ctx, projectID, option.WithServiceAccountFile("./credentials.json"))
 
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 		return nil, err
 	}
 
@@ -51,7 +51,7 @@ func queryService(sql string) ([]map[string]bigquery.Value, error) {
 	it, err := q.Read(ctx)
 
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 		return nil, err
 	}
 
@@ -64,7 +64,7 @@ func queryService(sql string) ([]map[string]bigquery.Value, error) {
 			break
 		}
 		if err != nil {
-			log.Fatal(err)
+			log.Println(err)
 			return nil, err
 		}
 	}

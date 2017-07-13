@@ -32,6 +32,7 @@ app.controller('AppCtrl', ['$scope', '$http', function ($scope, $http) {
       }
       this.showLoading = false;
     }.bind(this), function(err){
+        alert('Query not valid \n', err.error);
       this.showLoading = false;
     });
 

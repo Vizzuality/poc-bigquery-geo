@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: microservice
-        image: vizzuality/poc-bigquery-geo
+        image: vizzuality/poc-bigquery-geo:0.0.2
         imagePullPolicy: Always
         args:
           - startkube

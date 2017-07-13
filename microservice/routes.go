@@ -10,11 +10,13 @@ import (
 func queryRouter(c *gin.Context) {
 	log.Println("[ROUTER] Query")
 	sql := c.Query("sql")
+
 	result, err := queryService(sql)
 
 	if err != nil {
-		c.JSON(500, "Generic Error")
+		c.JSON(http.StatusBadRequest, map[string]string{"error": "Error"})
 	} else {
 		c.JSON(http.StatusOK, result)
 	}
+
 }
