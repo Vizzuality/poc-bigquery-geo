@@ -5,8 +5,12 @@ metadata:
     name: microservice
   name: microservice
 spec:
+  type: LoadBalancer
   ports:
-    - port: 3050
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 3050
   selector:
     name: microservice
 
@@ -26,14 +30,25 @@ spec:
     spec:
       containers:
       - name: microservice
-        image: <notset>
+        image: vizzuality/poc-bigquery-geo
+        imagePullPolicy: Always
         args:
-          - start
+          - startkube
         env:
           - name: PORT
             value: "3050"
           - name: GIN_MODE
             value: release
+          - name: GCLOUD_PROJECT_ID
+            valueFrom:
+                secretKeyRef:
+                  name: gcloudsecrets
+                  key: GCLOUD_PROJECT_ID
+          - name: GCLOUD_CREDENTIALS
+            valueFrom:
+                secretKeyRef:
+                  name: gcloudsecrets
+                  key: GCLOUD_CREDENTIALS
 
         ports:
           - containerPort: 3050

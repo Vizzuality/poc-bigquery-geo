@@ -12,6 +12,11 @@ case "$1" in
         echo -e "$GCLOUD_CREDENTIALS" | base64 -d > credentials.json
         exec go run main.go
         ;;
+    startkube)
+        echo "Running Start in Kube Cluster"
+        echo -e "$GCLOUD_CREDENTIALS" > credentials.json
+        exec go run main.go
+        ;;
     *)
         exec "$@"
 esac
